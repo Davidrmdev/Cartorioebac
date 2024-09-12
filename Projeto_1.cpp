@@ -2,15 +2,18 @@
 #include <stdlib.h>   //biblioteca responsável por alocar espaço na memória 
 #include <locale.h>   //biblioteca alocação de texto por região 
 #include <string.h>   //biblioteca resposável por cuidar das strings
+#include <ctype.h>   // biblioteca para ultilizar isdigit
+#include <conio.h>   //para ultilizar o getch 
 
-int registro() // Função responsavel por cadastrasr os usuários no sistema 
+int registro() // Função responsavel por cadastrar os usuários no sistema 
 {
 	//inicio criação de variáveis/string
-	char arquivo[40];
-	char cpf[40];
-	char nome[40];
+	char arquivo  [40];
+	char cpf      [40];
+	char nome     [40];
 	char sobrenome[40];
-	char cargo[40];
+	char cargo    [40];
+	
 	//fim da criação de variáveis/string
 	
 	printf("Digite o cpf a ser cadastrado: ");//coletando o cpf do usuário
@@ -80,6 +83,8 @@ int consulta()//função responsável por consultar os usuário
 	
 	FILE * file;//abrindo o arquivo file
 	file =  fopen(cpf, "r");//acessando o arquivo e lendo, "r" significa ler o arquivo 
+	
+	printf("aqui estão as informações do usuário:", cpf);
 
 	
 	if(file == NULL)//Se o arquivo for nulo, ou seja não tem o usuário cadastrando no sistema
@@ -104,14 +109,15 @@ int deletar()//função responsável por deletar os usuários
 	char cpf[40];
 	
 	printf("Digite o cpf do usuário a ser deletado:");//coletando o cpf a ser deletado 
-	scanf("%s", cpf);//salvando a string 
+	scanf("%s", cpf);//salvando a string
+	 
 	
 	remove(cpf);//apagando o arquivo do banco de dados
 	
 	FILE * file;//acessando o file
 	file = fopen(cpf, "r");//abrindo o arquivo e o lendo
 	
-	if (file == NULL)// se o arquivo(cpf) dor null
+	if (file == NULL)// se o arquivo(cpf) for null
 	{
 		printf("o usuário não se encontra no sistema\n\n");//informando que o usuário não consta no sistema 
 		system("pause");//mantendo as informações visiveis 
@@ -140,6 +146,8 @@ int main()//função principal
      printf("\t1- Registrar nomes\n");
      printf("\t2- Consultar nomes\n");
      printf("\t3- Deletar nomes\n");
+     printf("\t4- Sair do sistema\n\n");
+     	
 	 printf("opção: ");//fim do menu
      
      scanf("%d", &opcao);//armazenando a escolha do usuário
@@ -160,9 +168,14 @@ int main()//função principal
 	 	 deletar();//chamada da função deletar
 	 	 break;
 	 	 
+	 	 case 4:
+	 	 printf("Obrigado por ultilizar o sistema!");
+	 	 return 0 ;
+	 	 break ;
+	 	 
 	 	 default://caso não for nenhuma das opções 
 	 	 printf("Essa opção não está disponível\n\n");//informando que a opção não existe 
-	 	 system("pause");//pusando as informções para ficarem visiveis 
+	 	 system("pause");//pusando as informações para ficarem visiveis 
 		 break;	
 	 
 	 }
