@@ -63,11 +63,39 @@ int registro() // Função responsavel por cadastrar os usuários no sistema
 	fprintf(file,".");//adicionando o "." para fim das informações do usuário
 	fclose(file);//fechando o arquivo 
 	
+	system("cls");
 	
-	system("pause");//manter as informações visivéis enquanto registra o usuário
+	//inicio da escolha para voltar ao menu, ou registrar outro usuário.
+	char opcao;
+	
+	printf("\tDeseja registrar mais usuário?\n");
+	printf("\t1 - sim\n");
+	printf("\t2 - não\n");
+	printf("\tOpção:");
 	
 	
 	
+	scanf("%d", &opcao);
+	system("cls");
+	
+	switch(opcao)
+	{
+		case 1:
+		registro();
+		break;
+		
+		case 2:
+		return 0;
+		break;
+		
+		default:
+		printf("Essa opção não está disponível\n\n");
+		break; 
+		
+		return 0 ;
+	}
+
+    // fim da escolha.
 }  
 
 int consulta()//função responsável por consultar os usuário
@@ -84,14 +112,12 @@ int consulta()//função responsável por consultar os usuário
 	FILE * file;//abrindo o arquivo file
 	file =  fopen(cpf, "r");//acessando o arquivo e lendo, "r" significa ler o arquivo 
 	
-	printf("aqui estão as informações do usuário:", cpf);
-
 	
 	if(file == NULL)//Se o arquivo for nulo, ou seja não tem o usuário cadastrando no sistema
 	{ 
-	printf("\nNão foi possivél localizar o arquivo!.\n\n ");//informando que o cpf digitado não consta no arquivo
+	printf("\nUsuário não se encontra no sistema!.\n\n ");//informando que o cpf digitado não consta no arquivo
 	}
-	
+
 	while(fgets(conteudo, 200, file) != NULL)
 	{
 		printf("\nEssas são as informações do usuário: ");
@@ -100,8 +126,45 @@ int consulta()//função responsável por consultar os usuário
 		
 		
 	}
+
+    system("pause");
+    
+    system("cls");
+
+
+    //inicio da escolha para voltar ao menu, ou consultar outro usuário.
+	char opcao;
+	float m;
 	
-	system("Pause");
+	printf("\tDeseja consultar outro usuário?\n");
+	printf("\t1 - Sim\n");
+	printf("\t2 - Não\n");
+	printf("\tOpção:");
+	
+	scanf("%d", &opcao);
+	
+	system("cls");
+	
+	switch(opcao)
+	{
+		case 1:
+		consulta();
+		break;
+		
+		case 2:
+		return 0;
+		break;
+		
+		default:
+		printf("Essa opção não está disponível\n\n");
+		break;
+		
+		return 0 ;
+	
+	}
+	
+    // fim da escolha 
+
 }
 
 int deletar()//função responsável por deletar os usuários
@@ -119,12 +182,47 @@ int deletar()//função responsável por deletar os usuários
 	
 	if (file == NULL)// se o arquivo(cpf) for null
 	{
-		printf("o usuário não se encontra no sistema\n\n");//informando que o usuário não consta no sistema 
+	
+		printf("o usuário já não se encontra no sistema\n\n");//informando que o usuário não consta no sistema 
 		system("pause");//mantendo as informações visiveis 
 		
 	}
+	
+    system("cls");
+    
+    //inicio da escolha para voltar ao menu, ou deletar outro usuário.
+	char opcao;
+	float m;
+	
+	printf("\tDeseja deletar outro usuário?\n");
+	printf("\t1 - Sim\n");
+	printf("\t2 - Não\n");
+	printf("\tOpção:");
+	
+	scanf("%d", &opcao); 
+	
+	system("cls");
+	
+	
+	switch(opcao)
+	{
+		case 1:
+		deletar();
+		break;
 		
-
+		case 2:
+		return 0 ;
+		break;
+		
+		default:
+		printf("Essa opção não está disponível");
+		break;
+			
+		return 0 ; 
+		
+	}
+	// fim da escolha.
+	
 	
 	
 }
