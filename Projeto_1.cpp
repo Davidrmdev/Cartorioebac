@@ -134,7 +134,7 @@ int consulta()//função responsável por consultar os usuário
 
     //inicio da escolha para voltar ao menu, ou consultar outro usuário.
 	char opcao;
-	float m;
+	
 	
 	printf("\tDeseja consultar outro usuário?\n");
 	printf("\t1 - Sim\n");
@@ -226,14 +226,49 @@ int deletar()//função responsável por deletar os usuários
 	
 	
 }
+ typedef struct//estrutura para logan no sistema 
+	 {
+	 	char usuario[20];
+	 	char senha[20];
+	 }pessoa; pessoa p[1];
 
 int main()//função principal 
 {
+	setlocale(LC_ALL, "Portuguese");//definindo linguagem
+	printf("\t -_Cartório da Ebac_- \n\n");
+	printf("\t\tlogin\n\n");
+	
+	char usuario[20];
+	char senha  [20];
+	
+	strcpy (p[0] .usuario, "David");//criando um usuário 
+	strcpy (p[0] .senha,   "Admin");// criando a senha 
+
+	printf("Usuário:");// perguntando o usuário a logar
+	scanf("%s", usuario);// salvando a resposta na string 
+	
+	printf("Senha:");// perguntando a senha 
+	scanf("%s", senha);// salvando a resposta na string 
+	
+	if ((strcmp (usuario,p [0].usuario)==0 ) && (strcmp (senha,p[0].senha) == 0 ))// comparando se o usuário e/ou a senha digitado são corretos 
+	{
+		printf("Usuário logado");// confirmação de login 
+	}else
+	{
+		printf("Usuário e/ou senha incorretos\n");// dados digitados incorretos 
+		
+		return 0;
+		
+	}
+
+
+	
+	 
 	 int opcao=0;
 	 int x=1;
 	 
 	 for(x=1;x=1;)
-	{
+	 {
 	 system("cls");
 	 
      setlocale(LC_ALL, "Portuguese");// definindo linguagens 
@@ -253,7 +288,7 @@ int main()//função principal
      system("cls");
      
       switch(opcao)
-	 {
+	  {
 	 	 case 1://caso a opção for 1 
 	 	 registro();//chmando da função registro
 	 	 break;
@@ -276,8 +311,9 @@ int main()//função principal
 	 	 system("pause");//pusando as informações para ficarem visiveis 
 		 break;	
 	 
-	 }
+	  }
      
     
-}
+    }
+  
 }
