@@ -157,9 +157,10 @@ int consulta()//função responsável por consultar os usuário
 		
 		default:
 		printf("Essa opção não está disponível\n\n");
+		system("pause");
 		break;
 		
-		return 0 ;
+		
 	
 	}
 	
@@ -180,20 +181,19 @@ int deletar()//função responsável por deletar os usuários
 	FILE * file;//acessando o file
 	file = fopen(cpf, "r");//abrindo o arquivo e o lendo
 	
+	
 	if (file == NULL)// se o arquivo(cpf) for null
 	{
 	
-		printf("o usuário já não se encontra no sistema\n\n");//informando que o usuário não consta no sistema 
+		printf("o usuário não se encontra no sistema\n\n");//informando que o usuário não consta no sistema 
 		system("pause");//mantendo as informações visiveis 
 		
 	}
-	
     system("cls");
     
     //inicio da escolha para voltar ao menu, ou deletar outro usuário.
 	char opcao;
-	float m;
-	
+
 	printf("\tDeseja deletar outro usuário?\n");
 	printf("\t1 - Sim\n");
 	printf("\t2 - Não\n");
@@ -218,7 +218,7 @@ int deletar()//função responsável por deletar os usuários
 		printf("Essa opção não está disponível");
 		break;
 			
-		return 0 ; 
+	
 		
 	}
 	// fim da escolha.
@@ -252,16 +252,16 @@ int main()//função principal
 	
 	if ((strcmp (usuario,p [0].usuario)==0 ) && (strcmp (senha,p[0].senha) == 0 ))// comparando se o usuário e/ou a senha digitado são corretos 
 	{
-		printf("Usuário logado");// confirmação de login 
+		printf("Usuário logado\n");// confirmação de login 
 	}else
 	{
 		printf("Usuário e/ou senha incorretos\n");// dados digitados incorretos 
-		
 		return 0;
 		
 	}
-
-
+	system("pause");
+	system("cls");
+	
 	
 	 
 	 int opcao=0;
@@ -304,7 +304,7 @@ int main()//função principal
 	 	 case 4:
 	 	 printf("Obrigado por ultilizar o sistema!");
 	 	 return 0 ;
-	 	 break ;
+	 	
 	 	 
 	 	 default://caso não for nenhuma das opções 
 	 	 printf("Essa opção não está disponível\n\n");//informando que a opção não existe 
